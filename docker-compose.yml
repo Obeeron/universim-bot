@@ -1,9 +1,7 @@
 version: '3.3'
 services:
   universimbot:
-    build:
-      context: https://github.com/Obeeron/UniversimBot.git
-      dockerfile: Dockerfile
+    image: obeeron/universimbot:latest
     restart: always
     container_name: UniversimBot
     volumes:
