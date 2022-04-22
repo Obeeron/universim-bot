@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  universimbot:
+    build:
+      context: https://github.com/Obeeron/UniversimBot.git
+      dockerfile: Dockerfile
+    restart: always
+    container_name: UniversimBot
+    volumes:
+      - ./config.yml:/app/config.yml
