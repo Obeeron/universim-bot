@@ -1,0 +1,10 @@
+minestrator:
+  api_key: yourApiKey
+  code_support: XXXXX
+
+discord:
+  bot_token: yourBotToken
+
+server:
+  name: serverName
+  ip: serverIp
