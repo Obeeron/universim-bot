@@ -22,9 +22,10 @@ Then rename *config.sample.yml* to *config.yml* and complete it.
 mkdir UniversimBot
 cd UniversimBot
 wget https://raw.githubusercontent.com/Obeeron/UniversimBot/master/docker-compose.yml
+wget https://raw.githubusercontent.com/Obeeron/UniversimBot/master/docker-compose.yml -O config.yml
 ```
 
-Then rename *config.sample.yml* to *config.yml* and complete it.
+Then rename complete *config.yml*.
 
 ## Run
 
