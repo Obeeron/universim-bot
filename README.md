@@ -9,8 +9,8 @@ Discord bot for Universim, a Minecraft server hosted with Minestrator.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies.
 
 ```bash
-git clone https://github.com/Obeeron/UniversimBot.git
-cd UniversimBot
+git clone https://github.com/Obeeron/universim-bot.git
+cd universim-bot
 pip3 install -r requirements.txt
 ```
 
@@ -19,10 +19,10 @@ Then rename *config.sample.yml* to *config.yml* and complete it.
 ### Docker
 
 ```bash
-mkdir UniversimBot
-cd UniversimBot
-wget https://raw.githubusercontent.com/Obeeron/UniversimBot/master/docker-compose.yml
-wget https://raw.githubusercontent.com/Obeeron/UniversimBot/master/config.sample.yml -O config.yml
+mkdir universim-bot
+cd universim-bot
+wget https://raw.githubusercontent.com/Obeeron/universim-bot/master/docker-compose.yml
+wget https://raw.githubusercontent.com/Obeeron/universim-bot/master/config.sample.yml -O config.yml
 ```
 
 Then complete the file *config.yml*.
