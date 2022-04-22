@@ -6,7 +6,7 @@ import yaml
 
 # Load the config file
 with open('config.yml', 'r') as ymlfile:
-    cfg = yaml.load(ymlfile, Loader=yaml.FullLoader) 
+    cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
 
@@ -38,7 +38,7 @@ async def on_ready():
 @bot.command(name='servinfo', brief = "Get the server's current status")
 async def commandServInfo(ctx):
     """ Command: !servinfo
-    Send the server's current status to the channel
+    Sends the server's current status to the channel
     Contains the server status, ip, and the number of players
     """
     
