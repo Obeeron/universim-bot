@@ -7,7 +7,7 @@ Discord bot for Universim, a Minecraft server hosted with Minestrator.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies.
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Run
