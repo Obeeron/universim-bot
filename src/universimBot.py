@@ -2,7 +2,7 @@ import config
 import discord
 import minestratorApi
 from discord.ext import commands
-
+import periodicTask
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
 
@@ -13,8 +13,20 @@ bot = commands.Bot(command_prefix='!', case_insensitive=True)
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
-    # Set the bot's activity to the server ip
-    await bot.change_presence(activity=discord.Game(f"{config.SERVER_IP}"))
+
+    # Add statuc update task
+    periodicTask.addPeriodic(config.STATUS_UPDATE_DELAY, update_status)
+    
+async def update_status():
+    serverContents = minestratorApi.getServerContents()
+    status = ""
+    
+    if serverContents['status'] != 'on':
+        status = "Server is offline"
+    else:
+        status = f": {serverContents['players']['online']}/{serverContents['players']['max']}"
+    
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
 
 # ==========================
 #        BOT COMMANDS

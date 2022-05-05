@@ -4,6 +4,7 @@ minestrator:
 
 discord:
   bot_token: yourBotToken
+  status_update_delay: 60
 
 server:
   name: serverName
