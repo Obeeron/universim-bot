@@ -1,25 +1,10 @@
-import requests
+import config
 import discord
+import minestratorApi
 from discord.ext import commands
 
-import yaml
-
-# Load the config file
-with open('config.yml', 'r') as ymlfile:
-    cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
-
-# ===========================
-#      MINESTRATOR API
-# ===========================
-def getServerContents():
-    header = {'Authorization': cfg['minestrator']['api_key'] }
-    response = requests.get(f"https://rest.minestrator.com/api/v1/server/content/{cfg['minestrator']['code_support']}", headers=header)
-    data = response.json()["data"]
-    if data == None:
-        return None
-    return data[0]
 
 # ==========================
 #        BOT EVENTS  
@@ -29,20 +14,20 @@ def getServerContents():
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     # Set the bot's activity to the server ip
-    await bot.change_presence(activity=discord.Game(f"{cfg['server']['ip']}"))
+    await bot.change_presence(activity=discord.Game(f"{config.SERVER_IP}"))
 
 # ==========================
 #        BOT COMMANDS
 # ==========================
 
-@bot.command(name='servinfo', brief = "Get the server's current status")
-async def commandServInfo(ctx):
-    """ Command: !servinfo
+@bot.command(name='status', brief = "Get the server's current status")
+async def commandStatus(ctx):
+    """ Command: !status
     Sends the server's current status to the channel
     Contains the server status, ip, and the number of players
     """
     
-    serverContents = getServerContents()
+    serverContents = minestratorApi.getServerContents()
     if(serverContents == None):
         await ctx.send("Could not retrieve server informations.")
         return
@@ -62,9 +47,10 @@ async def commandServInfo(ctx):
         embed.add_field(name="Status", value="🔴 Offline", inline=True)
         embed.add_field(name="Players", value="► 0/0", inline=True)
     
-    embed.add_field(name="Server IP", value=f"► {cfg['server']['ip']}", inline=False)
+    embed.add_field(name="Server IP", value=f"► {config.SERVER_IP}", inline=False)
 
     await ctx.send(embed=embed)
 
 if __name__ == '__main__':
-    bot.run(cfg['discord']['bot_token'])
+    # Load the config file
+    bot.run(config.BOT_TOKEN)
