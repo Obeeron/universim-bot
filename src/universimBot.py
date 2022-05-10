@@ -21,8 +21,8 @@ async def update_status():
     serverContents = minestratorApi.getServerContents()
     status = ""
     
-    if serverContents['status'] != 'on':
-        status = "Server is offline"
+    if serverContents == None or serverContents['status'] != 'on':
+        status = "Server offline"
     else:
         status = f": {serverContents['players']['online']}/{serverContents['players']['max']}"
     

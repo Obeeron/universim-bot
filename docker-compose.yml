@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   universimbot:
-    image: obeeron/universimbot:latest
+    build: obeeron/universimbot:latest
     restart: always
     container_name: UniversimBot
     volumes:

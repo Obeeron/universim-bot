@@ -4,7 +4,10 @@ loop = asyncio.get_event_loop()
 
 async def periodic(period, fun):
     while True:
-        await fun()
+        try:
+            await fun()
+        except Exception as e:
+            print(e)
         await asyncio.sleep(period)
 
 def addPeriodic(period, fun):
